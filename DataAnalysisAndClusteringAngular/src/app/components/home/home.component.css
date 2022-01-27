@@ -1,0 +1,439 @@
+/* 1- Common Styles */
+/* 
+    - overlay
+    - opacity hover
+    - section header
+    - section padding
+    - hover effect 1 ( left to right )
+    - hover effect 2 ( top to bottom )
+*/
+/* le role d'overlay est d'ajouter layer un couleur au dessus de background avec la 
+position relative (pour parent) et absolute (pour le fils)  */
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0, 0.7);
+    top: 0;
+    left: 0;
+}
+.hover-opacity{
+    transition: opacity .5s;
+}
+.hover-opacity:hover{
+    opacity: 0.8;
+}
+/* effect left to right and top to bottom*/
+.ltr-effect,
+.tb-effect{
+   position: relative;
+}
+.ltr-effect::after,
+.tb-effect::after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: #333;
+}
+/* effect left to right  */
+.ltr-effect::after{
+    width: 0%;
+    transition: width .5s;
+}
+.ltr-effect:hover::after{
+    width: 100%;
+}
+/* effect top to bottom */
+.tb-effect::after{
+    height: 0;
+    transition: height .5s;
+}
+.tb-effect:hover::after{
+    height: 100%;
+}
+
+/* 2- General css style */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+.container{
+    width: 85%; /*etait 80*/
+    margin: auto;
+}
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+.clear{
+    clear: both;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: montserrat,sans-serif;
+}
+button{
+    font-family:  'Varela Round', sans-serif ;
+}
+a{
+    text-decoration: none;
+}
+.pd-y{
+   padding: 120px 0;
+}
+.section-header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.section-header .section-title{
+    font-size: 35px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.section-header .line{
+    display: block;
+    height: 4px;
+    width: 60px;
+    background-color: #6195ff;
+    margin: 0 auto 70px auto;
+}
+/* 3- Sections Styles */
+/* 3.0- Header Section */
+.header{
+    position: fixed;
+    width: 100%;
+    z-index:2 ;
+}
+.header .nav{
+    width: 50%;
+    float: right;
+    list-style: none;
+    text-align: right;
+}
+.header .nav > li{
+    display: inline-block;
+}
+.header .nav > li > a{
+    color: #fff;
+    padding: 20px 10px;
+    display: block;
+    font-size: 15px;
+}
+
+.header .nav > li > a.active::after,
+.header .nav > li > a::after{
+    content: "";
+    display:  block;
+    height: 3px;
+    margin-top: 2px;
+    background-color: #6195ff;
+    transition: width 0.5s;
+}
+.header .nav > li > a.active::after{
+    width: 100%;
+}
+.header .nav > li > a::after{
+    width: 0%;
+}
+.header .nav > li > a:hover::after{
+    width: 100%;
+}
+
+.dropdown{
+    position: relative;
+}
+.dropdown-menu{
+    position: absolute;
+    width: 116px;
+    text-align: center;
+    left: -50%;
+    top: 70%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s , visibility 1s;
+}
+.dropdown-menu li a{
+    color: #fff;
+    background-color: #6195ff;
+    display: block;
+    padding: 7px;
+}
+.dropdown:hover .dropdown-menu{
+    opacity:1 ;
+    visibility: visible;
+}
+/* 3.0.1 Version Mobile Header */
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 100px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+    }
+    .header .nav {
+      position: fixed;
+      width: 90%;
+      height: 100vh;
+      background: #2c3e50;
+      top: 65px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;  
+    }
+    .header .nav li{
+      display: block;
+      line-height: 30px;
+    }
+    .header .nav li a{
+      font-size: 15px;
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+  }
+/* 3.1 Home Section */
+.home{
+    height: 100vh;
+    background-image: url( ../../../assets/images/background/informatique.jpg);
+    background-size: cover;
+    position: relative;
+}
+/* overlay sur la section common leur role est d'ajouter layer un couleur au dessus de background avec la 
+position relative (pour parent) et absolute (pour le fils) */
+
+.home-content{
+    position: absolute;
+    width: 65%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.home .title{
+    color: white;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+} 
+.home .home-desc{
+    margin: 20px 0;
+    color: white;
+    letter-spacing: 2px;
+    line-height: 1.5 ;
+}
+.home .btn{
+    width: 15%;
+    height :45px;
+    padding: 10px 0;
+    border-radius: 6px;
+    border :0;
+    cursor: pointer;
+    font-size: 15px;
+}
+.home .btn-start{
+    margin-right: 10px;
+    background-color: white;
+}
+.home .btn-learn{
+    background-color: #6195ff;
+    color: white;
+}
+/* 3.1.1 Version Mobile Home */
+@media (max-width: 858px){
+    .home .title{
+        font-size: 1.5rem;
+    }
+    .home .home-desc{
+        margin: 20px 0;
+        letter-spacing: 1px;
+        line-height: 1.5 ;
+        font-size: 0.8rem;
+    }
+    .home .btn{
+        width: 38%;
+        height :35px;
+        padding: 5px 0;
+        font-size: 12px;
+        margin: auto auto 10px auto;
+        display: block;
+    }
+}
+
+
+
+/* 3.4.2 Services Section */
+.service{
+    background: #f9f9f9;
+}
+.service-item{
+    width: 50%;
+    float: left;
+}
+.service-item .section-header{
+    text-align: left;
+}
+.service-item .section-header .line{
+    margin:0 0 40px 0;
+}
+.service-item-desc{
+    padding-right: 20px;
+    color: #999;
+    line-height: 1.5;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+.service-list{
+    list-style: none;
+}
+.service-list li{
+    margin-bottom: 10px;
+    color: #999;
+}
+.service-list li i{
+   border: 1px solid #6195ff;
+   color: #6195ff;
+   width: 30px;
+   height: 30px;
+   padding: 7px;
+   border-radius: 50%;
+}
+
+.service-item-img img{
+    width: 100%;
+}
+.service-bollets{
+    list-style: none;
+    text-align: center;
+}
+.service-bollets li{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    margin: 10px 5px;
+    border-radius: 50%;
+}
+.service-bollets li.active{
+    background-color: #6195ff;
+}
+.service-bollets li:hover{
+    background-color: #6195ff;
+}
+/* 3.4.3 Version Mobile Offers */
+@media (max-width: 858px){
+    .offer-content{
+            transform: translate(13%,10%);
+        }
+    .offer-item {
+        display: block;
+        float: none;
+        width: 70%;
+        align-content: center;
+    }
+    .offer-item-title{
+        font-size: 18px;
+    }
+    .offer-item.mg{
+        margin: 5% 0%;
+    }
+    .section-header .section-title{
+        font-size: 25px;
+    }
+    .section-header .line{
+        height: 3px;
+        width: 50px;
+    }
+    /* service */
+    .service-item{
+        width: 100%;
+        float: none;
+        display: block;
+    }
+    .service-list li{
+        font-size: 15px;
+    }
+}
+/* 3.8 Notre equipe Section */
+.team-content{
+    overflow: hidden;
+}
+.team-item{
+    width: 30%;
+    background: #e8e8e8;
+    padding: 40px 10px;
+    text-align: center;
+    left: 30%;
+}
+.team-item .team-img{
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
+
+.team-item .team-img img{
+    width: 100%;
+}
+.team-item .team-info-title{
+    color: #222;
+    margin: 10px 0;
+    transition: color .5s;
+}
+.team-item .team-info-text{
+    color: #999;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color .5s;
+}
+.team-item.mg{
+    margin :0 5%;
+}
+
+.team-item:hover .team-overlay{
+    opacity: 1;
+    visibility: visible;
+}
+.team-item.tb-effect{
+    z-index: 1;
+}
+.team-item:hover .team-info-title{
+    color: #fff;
+}
+.team-item:hover .team-info-text{
+    color: #6195ff;
+}
+/* 3.8.1 Version Mobile Notre equipe */
+@media (max-width: 858px){
+    .team-item{
+        width: 50%;
+        display: block;
+        float: none;
+        transform: translate(50%,10%);
+    }
+    .team-item.mg{
+        margin :5% 0%;
+    }
+}
+
+.footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #2c3e50;
+    color: #fff;
+  }
+  
+  .copyright {
+    background-color: #1a252f;
+  }
