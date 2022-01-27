@@ -3,3 +3,5 @@ The implementation of a distributed architecture based on microservices consumab
 
 The data set used in this project was provided by Wuzzuf jobs in Egypt data set at Kaggle :
 https://www.kaggle.com/omarhanyy/wuzzuf-jobs
+
+Presentation : https://youtu.be/EgO9dgvT46U
